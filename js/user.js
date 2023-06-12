@@ -82,23 +82,23 @@ function updateUIOnUserLogin() {
   updateNavOnLogin();
 }
 /////////////////////////////////////////////////////////////////////////////////////////
-function toggleFavorites(e) {
-    if (e.target.tagName === 'INPUT') {
-      if (!favsListArr) {
-        favsListArr = [];
-      }
-      const html = e.target.parentElement.innerHTML
-      if (e.target.checked) {
-        const index = html.indexOf('checkbox') + 9;
-        favsListArr.push(`<li>${html.slice(0, index)} checked${html.slice(index)}</li>`)
-      }
-      else if (!e.target.checked) {
-        favsListArr.splice(favsListArr.indexOf(`<li>${html}</li>`), 1);
-      }
-      e.target.parentElement.classList.toggle('favorite');
-      localStorage.setItem('favStories', JSON.stringify(favsListArr))
-    }
-  return
-}
-$allStoriesList.on('click',toggleFavorites);
-favsList.on('click', toggleFavorites);  
+// function toggleFavorites(e) {
+//     if (e.target.tagName === 'INPUT') {
+//       if (!favsListArr) {
+//         favsListArr = [];
+//       }
+//       const html = e.target.parentElement.innerHTML
+//       if (e.target.checked) {
+//         const index = html.indexOf('checkbox') + 9;
+//         favsListArr.push(`<li>${html.slice(0, index)} checked${html.slice(index)}</li>`)
+//       }
+//       else if (!e.target.checked) {
+//         favsListArr.splice(favsListArr.indexOf(`<li>${html}</li>`), 1);
+//       }
+//       e.target.parentElement.classList.toggle('favorite');
+//       localStorage.setItem('favStories', JSON.stringify(favsListArr))
+//     }
+//   return
+// }
+// $allStoriesList.on('click',toggleFavorites);
+// favsList.on('click', toggleFavorites);  

@@ -69,7 +69,7 @@ function submitStory () {
     const title = submitTitle.value;
     const author = submitAuthor.value;
     const url = submitUrl.value;
-    const submittedStory = generateStoryMarkup(addStory(currentUser.token, {title, author, url}));
+    const submittedStory = generateStoryMarkup(addStory(currentUser.loginToken, {title, author, url}));
     $allStoriesList.append(submittedStory);
   }
   catch(error) {

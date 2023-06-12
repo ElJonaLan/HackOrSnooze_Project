@@ -70,9 +70,12 @@ class User {
     // instantiate Story instances for the user's favorites and ownStories
     this.favorites = favorites.map(s => new Story(s));
     this.ownStories = ownStories.map(s => new Story(s));
-
     // store the login token on the user so it's easy to find for API calls.
     this.loginToken = token;
+    const favsList = $('#favs-list');
+    const $allStoriesList = $("#all-stories-list");
+    $allStoriesList.on('click', this.toggleFavorites);
+    favsList.on('click', this.toggleFavorites);  
   }
 
 
@@ -149,5 +152,22 @@ class User {
     }
   }
 
-
+  toggleFavorites(e) {
+    if (e.target.tagName === 'INPUT') {
+      if (!favsListArr) {
+        favsListArr = [];
+      }
+      const html = e.target.parentElement.innerHTML
+      if (e.target.checked) {
+        const index = html.indexOf('checkbox') + 9;
+        favsListArr.push(`<li>${html.slice(0, index)} checked${html.slice(index)}</li>`)
+      }
+      else if (!e.target.checked) {
+        favsListArr.splice(favsListArr.indexOf(`<li>${html}</li>`), 1);
+      }
+      e.target.parentElement.classList.toggle('favorite');
+      localStorage.setItem('favStories', JSON.stringify(favsListArr))
+    }
+  return
+}
 }
